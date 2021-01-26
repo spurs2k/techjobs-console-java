@@ -76,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value)) {
                 jobs.add(row);
             }
         }
@@ -125,15 +125,14 @@ public class JobData {
         }
     }
 
-    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm){
-
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
         loadData();
         ArrayList<HashMap<String, String>> retVal = new ArrayList<>();
         String lcSearchTerm = searchTerm.toLowerCase();
 
-        for(HashMap<String, String> row: allJobs){
-            for(String s: row.values()){
-                if(s.toLowerCase().indexOf(lcSearchTerm) >= 0){
+        for (HashMap<String, String> row: allJobs) {
+            for (String s: row.values()) {
+                if (s.toLowerCase().contains(lcSearchTerm)) {
                     retVal.add(row);
                     break;
                 }
